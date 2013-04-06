@@ -20,7 +20,7 @@ $(document).ready(function(e) {
 		var awatchID = null;
 				$('#aInc').tap(function(){
 			awatchID = navigator.accelerometer.watchAcceleration(function(acceleration){
-				$('#aRes').html('Acceleration X: ' + acceleration.x + '<br />' +
+				$('#aRES').html('Acceleration X: ' + acceleration.x + '<br />' +
                             'Acceleration Y: ' + acceleration.y + '<br />' +
                             'Acceleration Z: ' + acceleration.z + '<br />' + 
                             'Timestamp: '      + acceleration.timestamp + '<br />'
