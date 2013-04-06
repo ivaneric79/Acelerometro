@@ -14,6 +14,38 @@ $(document).ready(function(e) {
 			watchID = null;
 			$('#bRes').text('0.000');
 		});
+		
+		//Acelerometro
+		
+		var awatchID = null;
+				$('#aInc').tap(function(){
+			awatchID = navigator.accelerometer.watchAcceleration(function(acceleration){
+				$('#aRes').html('Acceleration X: ' + acceleration.x + '<br />' +
+                            'Acceleration Y: ' + acceleration.y + '<br />' +
+                            'Acceleration Z: ' + acceleration.z + '<br />' + 
+                            'Timestamp: '      + acceleration.timestamp + '<br />'
+);
+			}, function(accError){
+					alert('Acelerometro error: ' + accError.code);
+			}, { frequency: 500 });
+		});
+		$('#aDtn').tap(function(){
+			navigator.accelerometer.clearWatch(awatchID);
+			awatchID = null;
+			$('#aRes').text('Detenido');
+		});
+		
+		//Globalizacion
+		navigator.globalization.getPreferredLanguage(
+  function (language) {
+	  $('#gRes').text(language.value);
+	  },
+  function () {alert('Error getting language\n');}
+);
+
+		
+		
+		
 				
 	}, false);
 });
